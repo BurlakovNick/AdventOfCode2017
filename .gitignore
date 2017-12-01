@@ -1,0 +1,7 @@
+[Bb]in
+.vs/
+obj
+_ReSharper*/
+workspace.xml
+packages
+.idea
