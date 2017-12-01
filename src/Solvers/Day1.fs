@@ -12,7 +12,7 @@ let getNext buffer position =
     let position = (position + buffer.values.Length / 2) % buffer.values.Length
     buffer.values.ElementAt position
 
-let aggreagateSum digits seed position =
+let aggregateSum digits seed position =
     let current = digits.values.ElementAt position
     let next = getNext digits position
     if current = next then seed + current
@@ -23,7 +23,7 @@ let calculateSum (digits : circularBuffer) =
     let seed = 0
 
     [ 0..digits.values.Length - 1 ]
-    |> Seq.fold (fun sum position -> aggreagateSum digits sum position) seed
+    |> Seq.fold (fun sum position -> aggregateSum digits sum position) seed
 
 let solveInverseCaptcha lines =
     let captcha = Seq.head lines
