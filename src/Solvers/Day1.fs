@@ -28,6 +28,5 @@ let calculateSum (digits : circularBuffer) =
 let solveInverseCaptcha lines =
     let captcha = Seq.head lines
     let digits = { values = (captcha |> Seq.map charToInt).ToArray() }
-    let digitDist = 1
     let answer = calculateSum digits
     answer.ToString()
