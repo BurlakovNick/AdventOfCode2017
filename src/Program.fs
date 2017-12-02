@@ -1,6 +1,6 @@
 ﻿module Program
 
-open Day1
+open Day2
 open System
 open System.IO
 open System.Linq
@@ -21,11 +21,11 @@ let getOutput problem id =
     else
         Seq.empty
 
-let solve (lines: seq<string>) = solveInverseCaptcha lines
+let solve (lines: seq<string>) = solveCorruptionChecksum lines
 
 [<EntryPoint>]
 let main argv =
-    let problem = "day_1"
+    let problem = "day_2"
     let inputFiles = getInputFiles problem
     for inputFile in inputFiles do
         let input = readLines inputFile

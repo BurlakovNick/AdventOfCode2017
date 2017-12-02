@@ -19,11 +19,8 @@ let aggregateSum digits seed position =
     else seed
 
 let calculateSum (digits : circularBuffer) =
-    let lastDigit = Seq.last digits.values
-    let seed = 0
-
     [ 0..digits.values.Length - 1 ]
-    |> Seq.fold (fun sum position -> aggregateSum digits sum position) seed
+    |> Seq.fold (fun sum position -> aggregateSum digits sum position) 0
 
 let solveInverseCaptcha lines =
     let captcha = Seq.head lines
