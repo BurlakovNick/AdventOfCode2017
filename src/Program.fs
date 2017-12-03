@@ -1,6 +1,6 @@
 ﻿module Program
 
-open Day2
+open Day3
 open System
 open System.IO
 open System.Linq
@@ -21,11 +21,11 @@ let getOutput problem id =
     else
         Seq.empty
 
-let solve (lines: seq<string>) = solveCorruptionChecksum lines
+let solve (lines: seq<string>) = solveSpiralMemory lines
 
 [<EntryPoint>]
 let main argv =
-    let problem = "day_2"
+    let problem = "day_3"
     let inputFiles = getInputFiles problem
     for inputFile in inputFiles do
         let input = readLines inputFile
@@ -35,5 +35,4 @@ let main argv =
         printfn "Result for test %s" inputFile
         printfn "%s" output
 
-
-    0 // return an integer exit code
+    0
