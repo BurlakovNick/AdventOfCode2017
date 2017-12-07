@@ -3,8 +3,6 @@ module Day5
 open System
 open System.Linq
 
-let infinity = [ while true do yield () ]
-
 let rec countJumps (jumps: int[]) =
     let (position, distance) =
         Seq.initInfinite (fun i -> i)

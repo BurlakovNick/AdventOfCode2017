@@ -1,6 +1,6 @@
 ﻿module Program
 
-open Day5
+open Day6
 open System
 open System.IO
 open System.Linq
@@ -21,11 +21,11 @@ let getOutput problem id =
     else
         Seq.empty
 
-let solve (lines: seq<string>) = solveJumps lines
+let solve (lines: seq<string>) = solveMemoryReallocation lines
 
 [<EntryPoint>]
 let main argv =
-    let problem = "day_5"
+    let problem = "day_6"
     let inputFiles = getInputFiles problem
     for inputFile in inputFiles do
         let input = readLines inputFile
