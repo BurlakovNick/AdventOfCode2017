@@ -1,6 +1,6 @@
 ﻿module Program
 
-open Day7
+open Day8
 open System
 open System.IO
 open System.Linq
@@ -21,11 +21,11 @@ let getOutput problem id =
     else
         Seq.empty
 
-let solve (lines: seq<string>) = solveRecursiveCircus lines
+let solve (lines: seq<string>) = solveILikeRegisters lines
 
 [<EntryPoint>]
 let main argv =
-    let problem = "day_7"
+    let problem = "day_8"
     let inputFiles = getInputFiles problem
     for inputFile in inputFiles do
         let input = readLines inputFile
