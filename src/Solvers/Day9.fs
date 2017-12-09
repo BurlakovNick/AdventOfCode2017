@@ -9,7 +9,7 @@ type ignoreFilterState =
     | SkipNextChar
     | TakeNextChar
 
-let markExclamations (state : ignoreFilterState) char =
+let markExclamations state char =
     match state with
     | SkipNextChar -> (TakeNextChar, false)
     | TakeNextChar ->
@@ -21,7 +21,7 @@ type garbageFilterState =
     | Garbage
     | NotGarbage
 
-let markGarbage (state: garbageFilterState) char =
+let markGarbage state char =
     match state with
     | Garbage ->
         match char with
@@ -32,7 +32,7 @@ let markGarbage (state: garbageFilterState) char =
         | '<' -> (Garbage, false)
         | _ -> (NotGarbage, true)
 
-let filterChars filter initialState (stream : stream) =
+let filterChars filter initialState stream =
     stream
     |> Seq.scan (fun (state, _, isValid) char ->
            let (state, isValid) = filter state char
@@ -45,12 +45,12 @@ let filterChars filter initialState (stream : stream) =
 let filterExclamations stream = filterChars markExclamations TakeNextChar stream
 let filterGarbage stream = filterChars markGarbage NotGarbage stream
 
-let filterIgnoredChars (stream : stream) =
+let filterIgnoredChars stream =
     stream
     |> filterExclamations
     |> filterGarbage
 
-let calculateGarbage (stream: stream) =
+let calculateGarbage stream =
     let stream = stream |> filterExclamations
     let (state, garbage) =
         stream
