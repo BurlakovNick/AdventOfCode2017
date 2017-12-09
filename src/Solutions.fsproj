@@ -54,6 +54,7 @@
     <Compile Include="Solvers\Day6.fs" />
     <Compile Include="Solvers\Day7.fs" />
     <Compile Include="Solvers\Day8.fs" />
+    <Compile Include="Solvers\Day9.fs" />
     <Content Include="packages.config" />
     <Compile Include="Solvers\Day1.fs" />
     <Compile Include="Program.fs" />
@@ -109,6 +110,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tests\day_8\2.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\day_9\1.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\day_9\2.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\day_9\3.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="App.config" />
