@@ -47,78 +47,80 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Solvers\Day2.fs" />
-    <Compile Include="Solvers\Day3.fs" />
-    <Compile Include="Solvers\Day4.fs" />
-    <Compile Include="Solvers\Day5.fs" />
-    <Compile Include="Solvers\Day6.fs" />
-    <Compile Include="Solvers\Day7.fs" />
-    <Compile Include="Solvers\Day8.fs" />
-    <Compile Include="Solvers\Day9.fs" />
+    <Compile Include="Solvers\Day02.fs" />
+    <Compile Include="Solvers\Day03.fs" />
+    <Compile Include="Solvers\Day04.fs" />
+    <Compile Include="Solvers\Day05.fs" />
+    <Compile Include="Solvers\Day06.fs" />
+    <Compile Include="Solvers\Day07.fs" />
+    <Compile Include="Solvers\Day08.fs" />
+    <Compile Include="Solvers\Day09.fs" />
     <Content Include="packages.config" />
-    <Compile Include="Solvers\Day1.fs" />
+    <Compile Include="Solvers\Day01.fs" />
     <Compile Include="Program.fs" />
-    <Content Include="Tests\day_1\1.in">
+    <Content Include="Tests\day_01\1.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_1\2.in">
+    <Content Include="Tests\day_01\2.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_1\3.in">
+    <Content Include="Tests\day_01\3.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_1\4.in">
+    <Content Include="Tests\day_01\4.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_1\5.in">
+    <Content Include="Tests\day_01\5.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_1\6.in">
+    <Content Include="Tests\day_01\6.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_2\1.in">
+    <Content Include="Tests\day_02\1.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_2\2.in">
+    <Content Include="Tests\day_02\2.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_3\1.in">
+    <Content Include="Tests\day_03\1.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_4\1.in">
+    <Content Include="Tests\day_04\1.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_5\1.in">
+    <Content Include="Tests\day_05\1.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_5\2.in">
+    <Content Include="Tests\day_05\2.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_6\1.in">
+    <Content Include="Tests\day_06\1.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_6\2.in">
+    <Content Include="Tests\day_06\2.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_7\1.in">
+    <Content Include="Tests\day_07\1.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_7\2.in">
+    <Content Include="Tests\day_07\2.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_8\1.in">
+    <Content Include="Tests\day_08\1.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_8\2.in">
+    <Content Include="Tests\day_08\2.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_9\1.in">
+    <Content Include="Tests\day_09\1.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_9\2.in">
+    <Content Include="Tests\day_09\2.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests\day_9\3.in">
+    <Content Include="Tests\day_09\3.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="App.config" />
