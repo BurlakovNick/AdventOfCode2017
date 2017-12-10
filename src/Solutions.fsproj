@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Solvers\Day10.fs" />
     <Compile Include="Solvers\Day02.fs" />
     <Compile Include="Solvers\Day03.fs" />
     <Compile Include="Solvers\Day04.fs" />
@@ -55,6 +56,7 @@
     <Compile Include="Solvers\Day07.fs" />
     <Compile Include="Solvers\Day08.fs" />
     <Compile Include="Solvers\Day09.fs" />
+    <Compile Include="Solvers\Day10_2.fs" />
     <Content Include="packages.config" />
     <Compile Include="Solvers\Day01.fs" />
     <Compile Include="Program.fs" />
@@ -121,6 +123,22 @@
     <Content Include="Tests\day_09\3.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Tests\day_10\1.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\day_10\2.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\day_10\3.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\day_10\4.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\day_10\5.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\day_10\6.in">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="App.config" />
