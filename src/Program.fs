@@ -1,6 +1,6 @@
 ﻿module Program
 
-open Day10_Hard
+open Day11
 open System
 open System.IO
 open System.Linq
@@ -21,11 +21,11 @@ let getOutput problem id =
     else
         Seq.empty
 
-let solve (lines: seq<string>) = solveKnotHash lines
+let solve (lines: seq<string>) = solveHexEd lines
 
 [<EntryPoint>]
 let main argv =
-    let problem = "day_10"
+    let problem = "day_11"
     let inputFiles = getInputFiles problem
     for inputFile in inputFiles do
         let input = readLines inputFile
