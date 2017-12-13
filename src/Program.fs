@@ -1,6 +1,6 @@
 ﻿module Program
 
-open Day12
+open Day13_Hard
 open System
 open System.IO
 open System.Linq
@@ -21,11 +21,11 @@ let getOutput problem id =
     else
         Seq.empty
 
-let solve (lines: seq<string>) = solveDigitalPlumber lines
+let solve (lines: seq<string>) = solvePacketScanners lines
 
 [<EntryPoint>]
 let main argv =
-    let problem = "day_12"
+    let problem = "day_13"
     let inputFiles = getInputFiles problem
     for inputFile in inputFiles do
         let input = readLines inputFile
