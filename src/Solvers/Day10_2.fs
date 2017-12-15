@@ -55,14 +55,18 @@ let getHash list =
     |> Seq.map (fun hash -> String.Concat( [| getHexadecimal (hash / 16); getHexadecimal (hash % 16) |] ))
     |> String.Concat
 
+let getKnotHash listSize input =
+    let lengthList = getLengthList input
+    let list = [ 0 .. listSize - 1 ].ToArray()
+    let knot = tieKnot list lengthList
+    let hash = getHash knot
+    hash
+
 let solveKnotHash (lines : seq<string>) =
     let listSize = Int32.Parse (lines.ElementAt 0)
     if (listSize <> 256)
     then "42"
     else
         let line = if Seq.length lines > 1 then lines.ElementAt 1 else String.Empty
-        let lengthList = getLengthList line
-        let list = [ 0 .. listSize - 1 ].ToArray()
-        let knot = tieKnot list lengthList
-        let hash = getHash knot
+        let hash = getKnotHash listSize line
         hash.ToString()

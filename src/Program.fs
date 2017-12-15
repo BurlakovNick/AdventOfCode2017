@@ -1,6 +1,6 @@
 ﻿module Program
 
-open Day13_Hard
+open Day14
 open System
 open System.IO
 open System.Linq
@@ -21,11 +21,11 @@ let getOutput problem id =
     else
         Seq.empty
 
-let solve (lines: seq<string>) = solvePacketScanners lines
+let solve (lines: seq<string>) = solveDiskFragmentation lines
 
 [<EntryPoint>]
 let main argv =
-    let problem = "day_13"
+    let problem = "day_14"
     let inputFiles = getInputFiles problem
     for inputFile in inputFiles do
         let input = readLines inputFile
