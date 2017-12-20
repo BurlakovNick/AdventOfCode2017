@@ -1,6 +1,6 @@
 ﻿module Program
 
-open Day20
+open Day18
 open System
 open System.IO
 open System.Linq
@@ -21,11 +21,11 @@ let getOutput problem id =
     else
         Seq.empty
 
-let solve (lines: seq<string>) = solveParticleSwarm lines
+let solve (lines: seq<string>) = solveDuet lines
 
 [<EntryPoint>]
 let main argv =
-    let problem = "day_20"
+    let problem = "day_18"
     let inputFiles = getInputFiles problem
     for inputFile in inputFiles do
         let input = readLines inputFile
