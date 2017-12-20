@@ -9,7 +9,7 @@ let findFirstCell (field: char[][]) =
     let y = field.[0] |> Seq.findIndex (fun c -> c <> ' ')
     { x = 0; y = y }
 
-type state = { cur: vec; prev: vec; stop: bool; path: string }
+type state = { cur: vec; prev: vec; stop: bool; path: string; steps: int }
 
 let add (a: vec) (b: vec) = { x = a.x + b.x; y = a.y + b.y }
 let sub (a: vec) (b: vec) = { x = a.x - b.x; y = a.y - b.y }
@@ -34,7 +34,8 @@ let move (prev: vec) (pos: vec) (field: char[][]) =
     
     if ch <> '+' then 
         let next = add pos delta
-        if isInField next field then Some(next)
+        if field.[next.x].[next.y] = ' ' then None
+        else if isInField next field then Some(next)
         else None
     else
         getNeighbors pos field
@@ -43,35 +44,35 @@ let move (prev: vec) (pos: vec) (field: char[][]) =
 
 let getNextState (state: state) (field: char[][]) = 
     let next = move state.prev state.cur field
-    //printfn "%A" next
+
     if next.IsNone then { state with stop = true }
     else 
         let nextChar = field.[next.Value.x].[next.Value.y]
         let nextPath = 
             if Char.IsLetter nextChar then state.path + nextChar.ToString()
             else state.path
-            
+        
         {
             prev = state.cur;
             cur = next.Value;
             stop = false;
-            path = nextPath
+            path = nextPath;
+            steps = state.steps + 1;
         }
 
 let getPath (field: char[][]) (start: vec) = 
 
-    let initState = { cur = start; prev = { start with x = -1}; stop = false; path = ""; }
+    let initState = { cur = start; prev = { start with x = -1}; stop = false; path = ""; steps = 1; }
     
     let endState = 
         Seq.initInfinite (fun _ -> ())
         |> Seq.scan (fun (state: state) _ -> getNextState state field) initState
         |> Seq.find (fun state -> state.stop)
         
-    endState.path
+    endState.steps
 
 let solveSeriesOfTubes (lines : seq<string>) =
-    //OLD answer: YOHREPXWNOY
     let field = lines |> Seq.map (fun line -> line.ToArray()) |> Seq.toArray
     let start = findFirstCell field
     let answer = getPath field start
-    answer
+    answer.ToString()
