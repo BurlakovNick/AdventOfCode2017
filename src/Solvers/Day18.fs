@@ -13,7 +13,7 @@ type Command =
     | Mul of Register * Argument
     | Mod of Register * Argument
     | Snd of Argument
-    | Rcv of Argument
+    | Rcv of Register
     | Jgz of Argument * Argument
     | Nop
 
@@ -36,7 +36,7 @@ let parseArg (line: string) =
 let toReg arg = 
     match arg with
     | Register reg -> Some reg
-    | Integer i -> None
+    | Integer _ -> None
 
 let parseCommand (line: string) = 
     let tokens = line.Split([| " " |], StringSplitOptions.RemoveEmptyEntries)
@@ -50,7 +50,7 @@ let parseCommand (line: string) =
     | "mul" -> Mul(reg.Value, arg2.Value)
     | "mod" -> Mod(reg.Value, arg2.Value)
     | "snd" -> Snd(arg1)
-    | "rcv" -> Rcv(arg1)
+    | "rcv" -> Rcv(reg.Value)
     | "jgz" -> Jgz(arg1, arg2.Value)
     | _ -> Nop 
 
@@ -80,7 +80,7 @@ let execute (state: State) =
     let state = 
         match command with
         | Set (reg, arg) -> 
-            modify reg arg (fun reg arg -> arg)
+            modify reg arg (fun _ arg -> arg)
         
         | Add (reg, arg) -> 
             modify reg arg (+)
@@ -100,12 +100,14 @@ let execute (state: State) =
         
         | Rcv (reg) ->
             if state.received.IsEmpty then { state with waiting = true; }
-            else 
+            else
+                let receivedValue = Seq.head state.received;
                 { 
                     state with 
                         received = Seq.skip 1 state.received |> Seq.toList;
                         waiting = false;
                         currentCommand = state.currentCommand + 1;
+                        registers = state.registers.Add (reg, receivedValue);
                 }
             
         | Jgz (arg1, arg2) ->
@@ -115,10 +117,6 @@ let execute (state: State) =
             else { state with currentCommand = state.currentCommand + 1 }
         
         | Nop -> state
-
-    //printfn "%A" command
-    //printfn "%A" state
-    //printfn ""
 
     match command with
     | Jgz _ -> state
@@ -139,7 +137,8 @@ let createInitState (programId: int) commands =
     }
     
 let canExecute state = 
-    state.waiting = false && state.finished = false
+    state.finished = false &&
+    (state.waiting = false || state.received.IsEmpty = false)
 
 let tryExecuteOneStep (state0, state1) = 
     if canExecute state1 then
@@ -147,8 +146,11 @@ let tryExecuteOneStep (state0, state1) =
         let state0 = 
             {
                 state0 with
-                    waiting = if state0.waiting then state1.sent.IsEmpty = false else false;
+                    waiting = 
+                        if state0.waiting then state1.sent.IsEmpty
+                        else false;
                     received = state1.sent;
+                    sent = state1.received;
             }
         (state0, state1)
     else
@@ -157,8 +159,11 @@ let tryExecuteOneStep (state0, state1) =
         let state1 = 
             {
                 state1 with
-                    waiting = if state1.waiting then state0.sent.IsEmpty = false else false;
+                    waiting = 
+                        if state1.waiting then state0.sent.IsEmpty
+                        else false;
                     received = state0.sent;
+                    sent = state0.received;
             }
         (state0, state1)
     else
@@ -168,16 +173,15 @@ let executeBothPrograms commands =
     let state0 = createInitState 0 commands
     let state1 = createInitState 1 commands
     
-    let (state0, state1) = 
-        Seq.initInfinite (fun _ -> ())
+    let (_, state1) = 
+        Seq.initInfinite ignore
         |> Seq.scan (fun (x, y) _ -> tryExecuteOneStep (x, y)) (state0, state1)
         |> Seq.skipWhile (fun (x, y) -> canExecute x || canExecute y)
         |> Seq.head
-        
+    
     state1.sentCount
 
 let solveDuet (lines : seq<string>) =
-    //old: 127 - to low
     let commands = lines |> Seq.map parseCommand |> Seq.toArray
     let answer = executeBothPrograms commands
     answer.ToString()
